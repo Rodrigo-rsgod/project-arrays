@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #faeeee;
+    background-color: #414141;
 }
 
 .container-buttons {
@@ -22,7 +22,7 @@ body {
 }
 
 button {
-    background-color: #464646;
+    background-color: #727272;
     border: none;
     border-radius: 5px;
     color: #ffffff;

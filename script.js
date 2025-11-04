@@ -5,15 +5,16 @@
 const list = document.querySelector('ul');
 const buttonshowAll = document.querySelector('.show-all');
 const buttonsmapAll = document.querySelector('.map-all');
+const sumAll = document.querySelector('.sum-all')
 
 let myLi = '';
 
 
 function showAll(productsArray) {
-     // Limpa o conteúdo da lista antes de adicionar novos itens
-     myLi = '';
+    // Limpa o conteúdo da lista antes de adicionar novos itens
+    myLi = '';
 
-     // Garante que o conteúdo só aparece após o clique
+    // Garante que o conteúdo só aparece após o clique
     productsArray.forEach((product) => {
         myLi += `
              
@@ -28,22 +29,37 @@ function showAll(productsArray) {
     })
 
 
-list.innerHTML = myLi
+    list.innerHTML = myLi
 
 }
 
 function mapAllItens() {
-  const newprices = menuOptions.map((product) => ({
-    ...product,
-    price: product.price * 0.9, //10% de desconto - esse calculo da 10% de desconto
+    const newprices = menuOptions.map((product) => ({
+        ...product,
+        price: product.price * 0.9, //10% de desconto - esse calculo da 10% de desconto
 
-  }))
+    }))
 
 
-showAll(newprices)
+    showAll(newprices)
 
 }
+
+function sumAllItems(){
+  const totalValue = menuOptions.reduce((acc,curr)  => acc + curr.price, 0)
+
+list.innerHTML =  `
+        <li>
+            <p>O valor total dos itens é R$ ${totalValue}</p>
+        </li>
+       `
+
+console.log(totalValue)
+
+}
+
 
 // 👉 Só executa quando o botão for clicado
 buttonshowAll.addEventListener('click', () => showAll(menuOptions))
 buttonsmapAll.addEventListener('click', mapAllItens)
+sumAll.addEventListener('click', sumAllItems)
